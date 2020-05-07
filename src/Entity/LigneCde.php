@@ -27,6 +27,12 @@ class LigneCde
      */
     private $quantite;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=commande::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $commande;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +58,18 @@ class LigneCde
     public function setQuantite(int $quantite): self
     {
         $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getCommande(): ?commande
+    {
+        return $this->commande;
+    }
+
+    public function setCommande(?commande $commande): self
+    {
+        $this->commande = $commande;
 
         return $this;
     }

@@ -57,6 +57,12 @@ class Utilisateur
      */
     private $etage;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=adresse::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $adresse;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +160,18 @@ class Utilisateur
     public function setEtage(?string $etage): self
     {
         $this->etage = $etage;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?adresse
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?adresse $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }

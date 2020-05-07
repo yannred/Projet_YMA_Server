@@ -52,6 +52,12 @@ class Commande
      */
     private $prix_total;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=utilisateur::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $utilisateur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +143,18 @@ class Commande
     public function setPrixTotal(float $prix_total): self
     {
         $this->prix_total = $prix_total;
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?utilisateur $utilisateur): self
+    {
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }

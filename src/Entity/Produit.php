@@ -42,6 +42,12 @@ class Produit
      */
     private $promo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=CategorieProduit::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie_produit;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +109,18 @@ class Produit
     public function setPromo(bool $promo): self
     {
         $this->promo = $promo;
+
+        return $this;
+    }
+
+    public function getCategorieProduit(): ?CategorieProduit
+    {
+        return $this->categorie_produit;
+    }
+
+    public function setCategorieProduit(?CategorieProduit $categorie_produit): self
+    {
+        $this->categorie_produit = $categorie_produit;
 
         return $this;
     }
