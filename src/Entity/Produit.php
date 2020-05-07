@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -47,6 +49,16 @@ class Produit
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie_produit;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=menu::class)
+     */
+    private $menu;
+
+    public function __construct()
+    {
+        $this->menu = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -121,6 +133,32 @@ class Produit
     public function setCategorieProduit(?CategorieProduit $categorie_produit): self
     {
         $this->categorie_produit = $categorie_produit;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|menu[]
+     */
+    public function getMenu(): Collection
+    {
+        return $this->menu;
+    }
+
+    public function addMenu(menu $menu): self
+    {
+        if (!$this->menu->contains($menu)) {
+            $this->menu[] = $menu;
+        }
+
+        return $this;
+    }
+
+    public function removeMenu(menu $menu): self
+    {
+        if ($this->menu->contains($menu)) {
+            $this->menu->removeElement($menu);
+        }
 
         return $this;
     }
