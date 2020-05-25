@@ -6,9 +6,15 @@ use App\Repository\LigneCdeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=LigneCdeRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\LigneCdeRepository")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({
+ *   "menu" = "LigneCdeMenu",
+ *   "produit" = "LigneCdeProduit"
+ * })
  */
-class LigneCde
+abstract class LigneCde
 {
     /**
      * @ORM\Id()

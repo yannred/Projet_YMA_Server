@@ -55,9 +55,15 @@ class Produit
      */
     private $menu;
 
+    /**
+     * @ORM\OneToMany(targetEntity=LigneCdeProduit::class, mappedBy="produit", orphanRemoval=true)
+     */
+    private $ligneCdeProduits;
+
     public function __construct()
     {
         $this->menu = new ArrayCollection();
+        $this->ligneCdeProduits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -158,6 +164,37 @@ class Produit
     {
         if ($this->menu->contains($menu)) {
             $this->menu->removeElement($menu);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LigneCdeProduit[]
+     */
+    public function getLigneCdeProduits(): Collection
+    {
+        return $this->ligneCdeProduits;
+    }
+
+    public function addLigneCdeProduit(LigneCdeProduit $ligneCdeProduit): self
+    {
+        if (!$this->ligneCdeProduits->contains($ligneCdeProduit)) {
+            $this->ligneCdeProduits[] = $ligneCdeProduit;
+            $ligneCdeProduit->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneCdeProduit(LigneCdeProduit $ligneCdeProduit): self
+    {
+        if ($this->ligneCdeProduits->contains($ligneCdeProduit)) {
+            $this->ligneCdeProduits->removeElement($ligneCdeProduit);
+            // set the owning side to null (unless already changed)
+            if ($ligneCdeProduit->getProduit() === $this) {
+                $ligneCdeProduit->setProduit(null);
+            }
         }
 
         return $this;
