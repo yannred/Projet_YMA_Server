@@ -29,6 +29,12 @@ class Ingredient
      */
     private $produit;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=CategorieIngredient::class, inversedBy="ingredients")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorieIngredient;
+
     public function __construct()
     {
         $this->produit = new ArrayCollection();
@@ -73,6 +79,18 @@ class Ingredient
         if ($this->produit->contains($produit)) {
             $this->produit->removeElement($produit);
         }
+
+        return $this;
+    }
+
+    public function getCategorieIngredient(): ?CategorieIngredient
+    {
+        return $this->categorieIngredient;
+    }
+
+    public function setCategorieIngredient(?CategorieIngredient $categorieIngredient): self
+    {
+        $this->categorieIngredient = $categorieIngredient;
 
         return $this;
     }
