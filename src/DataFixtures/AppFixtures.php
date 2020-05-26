@@ -108,7 +108,7 @@ class AppFixtures extends Fixture
 
         $tabProduit = array();
         array_push($tabProduit,
-            array('Tacos simple', 'Délicieux tacos la beauté', 5.8, self::PHOTO, false, 'Tacos', array('Viande','Salade',)),
+            array('Tacos simple', 'Délicieux tacos la beauté', 5.8, self::PHOTO, false, 'Tacos'),
             array('Tacos double', 'Délicieux tacos deux fois plus de la beauté', 5.8, self::PHOTO, true, 'Tacos'),
             array('Tacos triple', 'Bonheur triple bonheur', 5.8, self::PHOTO, true, 'Tacos'),
             array('Nuggets x4', '4 délicieux pollos', 3.5, self::PHOTO, false, 'Tapas'),
@@ -134,57 +134,6 @@ class AppFixtures extends Fixture
             $tabObjetProduit[$i]->setCategorieProduit($tabObjetCategorieProduit[$quelleCategorieProduit]);
             $manager->persist($tabObjetProduit[$i]);
         }
-
-
-
-//
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
 
         $manager->flush();
     }
