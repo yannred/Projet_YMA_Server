@@ -37,86 +37,50 @@ class AppFixtures extends Fixture
         //************************************************ Ingredient ************************************************
         //************************************************************************************************************
 
-        //***************************** Viande *****************************
         $tabIngredient = array();
         array_push($tabIngredient,
-        'Viande hachée',
-        'Kebbab',
-        'Poulet mariné',
-        'Cordon bleu',
-        'Mergez',
-        'Thunder',
-        'Nugget',
-        'Sans viande'
+            array('Viande hachée', 'Viande'),
+            array('Kebbab', 'Viande'),
+            array('Poulet mariné', 'Viande'),
+            array('Cordon bleu', 'Viande'),
+            array('Mergez', 'Viande'),
+            array('Thunder', 'Viande'),
+            array('Nugget', 'Viande'),
+            array('Sans viande', 'Viande'),
+            array('Ketchup', 'Sauce'),
+            array('Mayonnaise', 'Sauce'),
+            array('Sauce blanche', 'Sauce'),
+            array('Barbecue', 'Sauce'),
+            array('Moutarde', 'Sauce'),
+            array('Curry', 'Sauce'),
+            array('Sauce Algérienne', 'Sauce'),
+            array('Salade', 'Garniture'),
+            array('Tomates', 'Garniture'),
+            array('Oignons', 'Garniture'),
+            array('Frite', 'Garniture'),
+            array('Sauce Fromage', 'Garniture'),
+            array('Cheddar', 'Supplement'),
+            array('Emmental râpé', 'Supplement'),
+            array('Raclette', 'Supplement'),
+            array('Sauce fromagère', 'Supplement'),
+            array('Oignons frits', 'Supplement'),
+            array('Chili pepper', 'Supplement'),
+            array('Oeuf', 'Supplement'),
+            array('Poivrons grillés', 'Supplement'),
+            array('Gratiné cheddar', 'Supplement'),
+            array('Gratiné raclette', 'Supplement'),
+            array('Gratiné emmental râpé', 'Supplement')
         );
+
         $tabObjetIngredient = array();
-        $quelleCategorieIngredient = array_search('Viande', $tabCategorieIngredient);
+
         for ($i=0; $i < count($tabIngredient); $i++){
             $tabObjetIngredient[$i] = new Ingredient();
-            $tabObjetIngredient[$i]->setNom($tabIngredient[$i]);
+            $tabObjetIngredient[$i]->setNom($tabIngredient[$i][0]);
+            $quelleCategorieIngredient = array_search($tabIngredient[$i][1], $tabCategorieIngredient);
             $tabObjetIngredient[$i]->setCategorieIngredient($tabObjetCategorieIngredient[$quelleCategorieIngredient]);
             $manager->persist($tabObjetIngredient[$i]);
         }
-        $compteurIngredient = count($tabIngredient);
-
-        //***************************** Sauce *****************************
-        array_push($tabIngredient,
-        'Ketchup',
-        'Mayonnaise',
-        'Sauce blanche',
-        'Barbecue',
-        'Moutarde',
-        'Curry',
-        'Sauce Algérienne'
-        );
-        $quelleCategorieIngredient = array_search('Sauce', $tabCategorieIngredient);
-        for ($i=$compteurIngredient; $i < count($tabIngredient); $i++){
-            $tabObjetIngredient[$i] = new Ingredient();
-            $tabObjetIngredient[$i]->setNom($tabIngredient[$i]);
-            $tabObjetIngredient[$i]->setCategorieIngredient($tabObjetCategorieIngredient[$quelleCategorieIngredient]);
-            $manager->persist($tabObjetIngredient[$i]);
-        }
-        $compteurIngredient = count($tabIngredient);
-
-        //***************************** Garniture *****************************
-        array_push($tabIngredient,
-        'Salade',
-        'Tomates',
-        'Oignons',
-        'Frite',
-        'Sauce Fromage'
-        );
-        $quelleCategorieIngredient = array_search('Garniture', $tabCategorieIngredient);
-        for ($i=$compteurIngredient; $i < count($tabIngredient); $i++){
-            $tabObjetIngredient[$i] = new Ingredient();
-            $tabObjetIngredient[$i]->setNom($tabIngredient[$i]);
-            $tabObjetIngredient[$i]->setCategorieIngredient($tabObjetCategorieIngredient[$quelleCategorieIngredient]);
-            $manager->persist($tabObjetIngredient[$i]);
-        }
-        $compteurIngredient = count($tabIngredient);
-
-        //***************************** Supplement *****************************
-        array_push($tabIngredient,
-        'Cheddar',
-        'Emmental râpé',
-        'Raclette',
-        'Sauce fromagère',
-        'Oignons frits',
-        'Chili pepper',
-        'Oeuf',
-        'Poivrons grillés',
-        'Gratiné cheddar',
-        'Gratiné raclette',
-        'Gratiné emmental râpé'
-        );
-        $quelleCategorieIngredient = array_search('Supplement', $tabCategorieIngredient);
-        for ($i=$compteurIngredient; $i < count($tabIngredient); $i++){
-            $tabObjetIngredient[$i] = new Ingredient();
-            $tabObjetIngredient[$i]->setNom($tabIngredient[$i]);
-            $tabObjetIngredient[$i]->setCategorieIngredient($tabObjetCategorieIngredient[$quelleCategorieIngredient]);
-            $manager->persist($tabObjetIngredient[$i]);
-        }
-        $compteurIngredient = count($tabIngredient);
 
 
         //************************************************************************************************************
@@ -144,7 +108,7 @@ class AppFixtures extends Fixture
 
         $tabProduit = array();
         array_push($tabProduit,
-            array('Tacos simple', 'Délicieux tacos la beauté', 5.8, self::PHOTO, false, 'Tacos'),
+            array('Tacos simple', 'Délicieux tacos la beauté', 5.8, self::PHOTO, false, 'Tacos', array('Viande','Salade',)),
             array('Tacos double', 'Délicieux tacos deux fois plus de la beauté', 5.8, self::PHOTO, true, 'Tacos'),
             array('Tacos triple', 'Bonheur triple bonheur', 5.8, self::PHOTO, true, 'Tacos'),
             array('Nuggets x4', '4 délicieux pollos', 3.5, self::PHOTO, false, 'Tapas'),
