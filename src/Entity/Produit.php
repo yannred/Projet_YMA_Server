@@ -7,10 +7,19 @@ use App\Repository\ProduitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={"groups"={"produits:list"}},
+ *     itemOperations={
+ *         "get"
+ *     },
+ *     collectionOperations={
+ *         "get"
+ *     }
+ * )
  */
 class Produit
 {
@@ -18,42 +27,50 @@ class Produit
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("produits:list")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("produits:list")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("produits:list")
      */
     private $description;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("produits:list")
      */
     private $prix;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("produits:list")
      */
     private $photo;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("produits:list")
      */
     private $promo;
 
     /**
      * @ORM\ManyToOne(targetEntity=CategorieProduit::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("produits:list")
      */
     private $categorie_produit;
 
     /**
-     * @ORM\ManyToMany(targetEntity=menu::class)
+     * @ORM\ManyToMany(targetEntity=Menu::class)
+     * @Groups("produits:list")
      */
     private $menu;
 
