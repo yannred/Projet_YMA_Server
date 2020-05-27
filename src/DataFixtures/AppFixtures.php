@@ -25,7 +25,8 @@ class AppFixtures extends Fixture
         'Tapas',
         'Accompagnement menu',
         'Boisson',
-        'Dessert'
+        'Dessert',
+        'Sauce'
         );
         $tabObjetCategorieProduit = array();
         for ($i=0; $i < count($tabCategorieProduit); $i++){
@@ -70,8 +71,14 @@ class AppFixtures extends Fixture
             array('Barquette de frites', 'Frites légères et croustillantes', 3.5, self::PHOTO, false, 'Tapas'),
             array('Barquette de potatoes', 'Potatoes savoureuses', 3.5, self::PHOTO, false, 'Tapas'),
 
-            array('Barquette de frites', 'Frites légères et croustillantes', 3.5, self::PHOTO, false, 'Accompagnement menu'),
-            array('Barquette de potatoes', 'Potatoes savoureuses', 3.5, self::PHOTO, false, 'Accompagnement menu'),
+            array('Frites', 'Frites légères et croustillantes', 3.5, self::PHOTO, false, 'Accompagnement menu'),
+            array('Potatoes', 'Potatoes savoureuses', 3.5, self::PHOTO, false, 'Accompagnement menu'),
+
+            array('Ketchup', '20cl', 1, self::PHOTO, false, 'Sauce'),
+            array('Mayonnaise', '20cl', 1, self::PHOTO, false, 'Sauce'),
+            array('Barbecue', '20cl', 1, self::PHOTO, false, 'Sauce'),
+            array('Moutarde', '20cl', 1, self::PHOTO, false, 'Sauce'),
+            array('Béarnaise', '20cl', 1, self::PHOTO, false, 'Sauce'),
 
             array('Coca-Cola Coke', '33cl', 2.5, self::PHOTO, false, 'Boisson'),
             array('Orangina', '33cl', 2.5, self::PHOTO, false, 'Boisson'),
