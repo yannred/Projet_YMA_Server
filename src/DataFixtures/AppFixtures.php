@@ -68,8 +68,8 @@ class AppFixtures extends Fixture
             array('Nuggets x4', '4 délicieux pollos', 3.5, self::PHOTO, false, 'Tapas'),
             array('Nuggets x6', '6 délicieux pollos', 5.5, self::PHOTO, false, 'Tapas'),
             array('Nuggets x8', '8 délicieux pollos', 7, self::PHOTO, true, 'Tapas'),
-            array('Barquette de frites', 'Frites légères et croustillantes', 3.5, self::PHOTO, false, 'Tapas'),
-            array('Barquette de potatoes', 'Potatoes savoureuses', 3.5, self::PHOTO, false, 'Tapas'),
+            array('Frites', 'Frites légères et croustillantes', 3.5, self::PHOTO, false, 'Tapas'),
+            array('Potatoes', 'Potatoes savoureuses', 3.5, self::PHOTO, false, 'Tapas'),
 
             array('Frites', 'Frites légères et croustillantes', 3.5, self::PHOTO, false, 'Accompagnement menu'),
             array('Potatoes', 'Potatoes savoureuses', 3.5, self::PHOTO, false, 'Accompagnement menu'),
