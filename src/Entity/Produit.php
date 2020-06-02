@@ -62,13 +62,6 @@ class Produit
     private $promo;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CategorieProduit::class)
-     * @ORM\JoinColumn(nullable=false)
-     * @Groups("produits:list")
-     */
-    private $categorie_produit;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Menu::class)
      * @Groups("produits:list")
      */
@@ -78,6 +71,12 @@ class Produit
      * @ORM\OneToMany(targetEntity=LigneCdeProduit::class, mappedBy="produit", orphanRemoval=true)
      */
     private $ligneCdeProduits;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=CategorieProduit::class, inversedBy="produits")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie_produit;
 
     public function __construct()
     {
