@@ -28,36 +28,42 @@ class Produit
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups("produits:list")
+     * @Groups("categorieProduit:list")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("produits:list")
+     * @Groups("categorieProduit:list")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("produits:list")
+     * @Groups("categorieProduit:list")
      */
     private $description;
 
     /**
      * @ORM\Column(type="float")
      * @Groups("produits:list")
+     * @Groups("categorieProduit:list")
      */
     private $prix;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups("produits:list")
+     * @Groups("categorieProduit:list")
      */
     private $photo;
 
     /**
      * @ORM\Column(type="boolean")
      * @Groups("produits:list")
+     * @Groups("categorieProduit:list")
      */
     private $promo;
 
