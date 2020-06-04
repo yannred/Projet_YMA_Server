@@ -53,7 +53,7 @@ class Commande
     private $prix_total;
 
     /**
-     * @ORM\ManyToOne(targetEntity=utilisateur::class)
+     * @ORM\ManyToOne(targetEntity=Utilisateur::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $utilisateur;

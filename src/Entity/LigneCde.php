@@ -34,7 +34,7 @@ abstract class LigneCde
     private $quantite;
 
     /**
-     * @ORM\ManyToOne(targetEntity=commande::class)
+     * @ORM\ManyToOne(targetEntity=Commande::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $commande;
