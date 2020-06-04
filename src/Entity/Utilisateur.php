@@ -164,12 +164,12 @@ class Utilisateur
         return $this;
     }
 
-    public function getAdresse(): ?adresse
+    public function getAdresse(): ?Adresse
     {
         return $this->adresse;
     }
 
-    public function setAdresse(?adresse $adresse): self
+    public function setAdresse(?Adresse $adresse): self
     {
         $this->adresse = $adresse;
 

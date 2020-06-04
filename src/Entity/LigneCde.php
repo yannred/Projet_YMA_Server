@@ -68,12 +68,12 @@ abstract class LigneCde
         return $this;
     }
 
-    public function getCommande(): ?commande
+    public function getCommande(): ?Commande
     {
         return $this->commande;
     }
 
-    public function setCommande(?commande $commande): self
+    public function setCommande(?Commande $commande): self
     {
         $this->commande = $commande;
 

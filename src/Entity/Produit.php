@@ -178,7 +178,7 @@ class Produit
         return $this;
     }
 
-    public function removeMenu(menu $menu): self
+    public function removeMenu(Menu $menu): self
     {
         if ($this->menu->contains($menu)) {
             $this->menu->removeElement($menu);
