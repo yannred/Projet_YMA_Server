@@ -46,7 +46,7 @@ class AppFixtures extends Fixture
             array('MARGUERITA', 'Sauce tomate ou Crème fraîche, mozzarella, olives.', 8.9, self::PHOTO, false, 'Pizza'),
             array('REGINA', 'Sauce tomate ou Crème fraîche, mozzarella, jambon, champignons frais.', 9.9, self::PHOTO, true, 'Pizza'),
             array('TONNATA', 'Sauce tomate ou Crème fraîche, mozzarella, thon, olives.', 9.9, self::PHOTO, true, 'Pizza'),
-            array('ORIENTALE', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, merguez fraiche preparer maison et precuite a la braise, poivrons, oignons rouges.', 9.9, '/AA0001.png', false, 'Pizza'),
+            array('ORIENTALE', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, merguez fraiche preparer maison et precuite a la braise, poivrons, oignons rouges.', 9.9, '/Produits/0001.png', false, 'Pizza'),
             array('CAMPIONE', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, viande hachée cuite a la braise ,olives vertes oeuf.', 9.9, self::PHOTO, false, 'Pizza'),
             array('BUFFALO', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, viande hachée cuite a la braise, oignons rouges, olives.', 9.9, self::PHOTO, false, 'Pizza'),
             array('MEDITERRANEENNE', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, fruits de mer, beurre persillé.', 9.9, self::PHOTO, false, 'Pizza'),
