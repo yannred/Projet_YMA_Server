@@ -1,0 +1,252 @@
+
+<?php
+
+/** Relations des tables
+
+    Abstract              Extends
+
+   |LigneCde| 1 ------ 1 |LigneCdeProduit| N ------ 1 |Produit| N --
+		|														   |
+		| 1 ---------- 1 |LigneCdeMenu| N ------ 1 |Menu| N -------|
+*/
+
+// https://github.com/max1300/web_library/pull/1/commits/1944d88205b4bb7244ef209996893fbc4de38199
+// https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/inheritance-mapping.html#class-table-inheritance
+
+//***********Classe parente ou abstraite LigneCde***********
+// Réalisée avec : php bin/console make:entity
+
+namespace App\Entity;
+
+use App\Repository\LigneCdeRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\LigneCdeRepository")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({
+ *   "menu" = "LigneCdeMenu",
+ *   "produit" = "LigneCdeProduit"
+ * })
+ */
+abstract class LigneCde
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+    // Suite du code
+}
+
+//***********Classe enfant ou etendue LigneCdeProduit***********
+// Créer manuellement
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\LigneCdeProduitRepository")
+ */
+class LigneCdeProduit extends LigneCde
+{
+	// Vide
+}
+
+//***********Classe Produit***********
+// Réalisée avec : php bin/console make:entity
+
+/**
+ * @ORM\Entity(repositoryClass=ProduitRepository::class)
+ */
+class Produit
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+    // Suite du code
+}
+
+//***********Créer les relations dans les classes LigneCdeProduit et Produit***********
+
+// php bin/console list make  => La liste des commandes maker
+
+/** Lignes de commande pour créer la relation :
+
+php bin/console make:entity
+
+ Class name of the entity to create or update (e.g. GentleKangaroo):
+ > LigneCdeProduit
+LigneCdeP
+roduit
+
+ Your entity already exists! So let's add some new fields!
+
+ New property name (press <return> to stop adding fields):
+ > produit
+
+ Field type (enter ? to see all types) [string]:
+ > relation
+relation
+
+ What class should this entity be related to?:
+ > Produit
+Produit
+
+What type of relationship is this?
+ ------------ ------------------------------------------------------------------------------ 
+  Type         Description                                                                   
+ ------------ ------------------------------------------------------------------------------ 
+  ManyToOne    Each LigneCdeProduit relates to (has) one Produit.                            
+               Each Produit can relate to (can have) many LigneCdeProduit objects
+
+  OneToMany    Each LigneCdeProduit can relate to (can have) many Produit objects.           
+               Each Produit relates to (has) one LigneCdeProduit
+
+  ManyToMany   Each LigneCdeProduit can relate to (can have) many Produit objects.           
+               Each Produit can also relate to (can also have) many LigneCdeProduit objects  
+
+  OneToOne     Each LigneCdeProduit relates to (has) exactly one Produit.                    
+               Each Produit also relates to (has) exactly one LigneCdeProduit.
+ ------------ ------------------------------------------------------------------------------ 
+
+ Relation type? [ManyToOne, OneToMany, ManyToMany, OneToOne]:
+ > ManyToOne
+ManyToOne
+e
+
+ Is the LigneCdeProduit.produit property allowed to be null (nullable)? (yes/no) [yes]:
+ > no
+
+ Do you want to add a new property to Produit so that you can access/update LigneCdeProduit objects from it - e.g. $produit->getLigneCdeProduits()
+? (yes/no) [yes]:
+ > 
+
+ A new property will also be added to the Produit class so that you can access the related LigneCdeProduit objects from it.
+
+ New field name inside Produit [ligneCdeProduits]:
+ >
+
+ Do you want to activate orphanRemoval on your relationship?
+ A LigneCdeProduit is "orphaned" when it is removed from its related Produit.
+ e.g. $produit->removeLigneCdeProduit($ligneCdeProduit)
+
+ NOTE: If a LigneCdeProduit may *change* from one Produit to another, answer "no".
+
+ Do you want to automatically delete orphaned App\Entity\LigneCdeProduit objects (orphanRemoval)? (yes/no) [no]:
+ > yes
+
+ updated: src/Entity/LigneCdeProduit.php
+ updated: src/Entity/Produit.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ >
+      
+  Success!
+*/
+
+
+//***********Résultat de la création automatique des relations***********
+
+//***********Classe LigneCdeProduit***********
+
+namespace App\Entity;
+
+use App\Repository\LigneCdeProduitRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\LigneCdeProduitRepository")
+ */
+class LigneCdeProduit extends LigneCde
+{
+	// Code généré automatiquement
+    /**
+     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="ligneCdeProduits")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $produit;
+
+    public function getProduit(): ?Produit
+    {
+        return $this->produit;
+    }
+
+    public function setProduit(?Produit $produit): self
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+}
+
+//***********Résultat de la création automatique des relations***********
+
+//***********Classe Produit***********
+
+namespace App\Entity;
+
+use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass=ProduitRepository::class)
+ */
+class Produit
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+     // Suite du code
+
+   	 // Code généré automatiquement
+     /**
+     * @ORM\OneToMany(targetEntity=LigneCdeProduit::class, mappedBy="produit", orphanRemoval=true)
+     */
+    private $ligneCdeProduits;
+
+    public function __construct()
+    {
+        $this->menu = new ArrayCollection();
+        $this->ligneCdeProduits = new ArrayCollection();
+    }
+     // Suite du code
+
+    // Code généré automatiquement
+    /**
+     * @return Collection|LigneCdeProduit[]
+     */
+    public function getLigneCdeProduits(): Collection
+    {
+        return $this->ligneCdeProduits;
+    }
+
+    public function addLigneCdeProduit(LigneCdeProduit $ligneCdeProduit): self
+    {
+        if (!$this->ligneCdeProduits->contains($ligneCdeProduit)) {
+            $this->ligneCdeProduits[] = $ligneCdeProduit;
+            $ligneCdeProduit->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneCdeProduit(LigneCdeProduit $ligneCdeProduit): self
+    {
+        if ($this->ligneCdeProduits->contains($ligneCdeProduit)) {
+            $this->ligneCdeProduits->removeElement($ligneCdeProduit);
+            // set the owning side to null (unless already changed)
+            if ($ligneCdeProduit->getProduit() === $this) {
+                $ligneCdeProduit->setProduit(null);
+            }
+        }
+
+        return $this;
+    }

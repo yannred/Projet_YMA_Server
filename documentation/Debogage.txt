@@ -1,0 +1,14 @@
+
+//Avoir une barre/console de debbugage de symfony dans le navigateur en bas
+
+https://symfony.com/doc/current/profiler.html
+
+https://flex.symfony.com/
+
+php composer req profiler --dev
+
+//Logs dans symfony
+
+https://symfony.com/doc/current/logging.html
+
+php composer req monolog --dev
