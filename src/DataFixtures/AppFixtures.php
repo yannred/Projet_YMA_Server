@@ -6,15 +6,44 @@ use App\Entity\CategorieIngredient;
 use App\Entity\CategorieProduit;
 use App\Entity\Ingredient;
 use App\Entity\Produit;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
     const PHOTO = 'https://picsum.photos/200';
 
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder){
+        $this->passwordEncoder = $passwordEncoder;
+    }
+
+
     public function load(ObjectManager $manager)
     {
+        //************************************************************************************************************
+        //************************************************ User ***************************************
+        //************************************************************************************************************
+        $tabUser = array();
+
+        $ROLE_USER[]= 'ROLE_USER';
+        array_push($tabUser,
+            array('user4auth', $ROLE_USER, 'password4auth')
+        );
+        $tabObjetUser = array();
+        for ($i=0; $i < count($tabUser); $i++){
+            $tabObjetProduit[$i] = new User();
+            $tabObjetProduit[$i]->setEmail($tabUser[$i][0]);
+            $tabObjetProduit[$i]->setRoles($tabUser[$i][1]);
+            $tabObjetProduit[$i]->setPassword($this->passwordEncoder->encodePassword($tabObjetProduit[$i],$tabUser[$i][2]));
+
+            $manager->persist($tabObjetProduit[$i]);
+        }
+        $manager->flush();
+
         //************************************************************************************************************
         //************************************************ CategorieProduit ***************************************
         //************************************************************************************************************
