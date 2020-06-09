@@ -2,11 +2,12 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Adresse;
 use App\Entity\CategorieIngredient;
 use App\Entity\CategorieProduit;
 use App\Entity\Ingredient;
 use App\Entity\Produit;
-use App\Entity\User;
+use App\Entity\Utilisateur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -25,22 +26,52 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         //************************************************************************************************************
+        //************************************************ Adresse ***************************************
+        //************************************************************************************************************
+        $tabAdresse = array();
+
+        array_push($tabAdresse,
+            array('4', 'Rue Ravier', 'Lyon', '69007')
+        );
+        $tabObjetAdresse = array();
+        for ($i=0; $i < count($tabAdresse); $i++){
+        $tabObjetAdresse[$i] = new Adresse();
+        $tabObjetAdresse[$i]->setNum($tabAdresse[$i][0]);
+        $tabObjetAdresse[$i]->setRue($tabAdresse[$i][1]);
+        $tabObjetAdresse[$i]->setVille($tabAdresse[$i][2]);
+        $tabObjetAdresse[$i]->setCp($tabAdresse[$i][3]);
+
+        $manager->persist($tabObjetAdresse[$i]);
+    }
+        $manager->flush();
+
+
+        //************************************************************************************************************
         //************************************************ User ***************************************
         //************************************************************************************************************
         $tabUser = array();
 
         $ROLE_USER[]= 'ROLE_USER';
         array_push($tabUser,
-            array('user4auth', $ROLE_USER, 'password4auth')
+            array('user4auth', $ROLE_USER, '%!password4auth!%', 'user4auth', 'user4auth', 'telephone', 'numéro de porte', 'code entrée', 'complement', true,)
         );
         $tabObjetUser = array();
         for ($i=0; $i < count($tabUser); $i++){
-            $tabObjetProduit[$i] = new User();
-            $tabObjetProduit[$i]->setEmail($tabUser[$i][0]);
-            $tabObjetProduit[$i]->setRoles($tabUser[$i][1]);
-            $tabObjetProduit[$i]->setPassword($this->passwordEncoder->encodePassword($tabObjetProduit[$i],$tabUser[$i][2]));
+            $tabObjetUser[$i] = new Utilisateur();
+            $tabObjetUser[$i]->setEmail($tabUser[$i][0]);
+            $tabObjetUser[$i]->setRoles($tabUser[$i][1]);
+            $tabObjetUser[$i]->setPassword($this->passwordEncoder->encodePassword($tabObjetUser[$i],$tabUser[$i][2]));
+            $tabObjetUser[$i]->setNom($tabUser[$i][3]);
+            $tabObjetUser[$i]->setPrenom($tabUser[$i][4]);
+            $tabObjetUser[$i]->setTelephone($tabUser[$i][5]);
+            $tabObjetUser[$i]->setNumPorte($tabUser[$i][6]);
+            $tabObjetUser[$i]->setCodeEntree($tabUser[$i][7]);
+            $tabObjetUser[$i]->setComplement($tabUser[$i][8]);
+            $tabObjetUser[$i]->setNewsletter($tabUser[$i][9]);
 
-            $manager->persist($tabObjetProduit[$i]);
+            $tabObjetUser[$i]->setAdresse($tabObjetAdresse[0]);
+
+            $manager->persist($tabObjetUser[$i]);
         }
         $manager->flush();
 
