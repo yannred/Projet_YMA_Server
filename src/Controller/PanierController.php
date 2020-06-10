@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PanierController extends AbstractController
 {
     /**
-     * @Route("/api/panier", name="panier", methods={"GET"})
+     * @Route("/api/panier", name="panier", methods={"POST"})
      * @param $request : tableau d'idProduit [322,323,355,355]
      * @return JsonResponse
      */
