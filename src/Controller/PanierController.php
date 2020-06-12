@@ -19,6 +19,7 @@ class PanierController extends AbstractController
     {
         //TODO YC Question LUCAS : Y avait-il un moyen de faire plus simple avec API Plateforme ?
         $tabPanier = [];
+        $totalPanier = 0;
         if ($panier = $request->getContent()) {
             $panier = json_decode($panier, true);
             if (!is_null($panier) && is_array($panier)){
@@ -30,11 +31,14 @@ class PanierController extends AbstractController
                         //TODO YC Question LUCAS : Pourquoi je ne peux pas utiliser le getCategorieProduit dans la ligne suivante ? me renvoie un objet de rien
 //                        array_push($tabPanier, [$produit->getId(), $produit->getCategorieProduit(), $produit->getNom(), $produit->getPhoto(), $produit->getPrix()]);
                         array_push($tabPanier, ["id" => $produit->getId(), "nom" => $produit->getNom(), "photo" => $produit->getPhoto(), "prix" => $produit->getPrix()]);
+                        $totalPanier = $totalPanier + (float)$produit->getPrix();
                     }
                 }
             }
         }
-
-        return new JsonResponse($tabPanier);
+        $json = [];
+        array_push($json, ['panier' => $tabPanier]);
+        array_push($json, ['totalPanier' => $totalPanier]);
+        return new JsonResponse($json);
     }
 }
