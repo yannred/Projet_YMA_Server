@@ -40,3 +40,10 @@ Créer les fixtures (remplissage de la base de donnée) :
 
     php bin/console doctrine:fixtures:load
     
+Créer les clefs pour l'authentification
+
+    Créer le dossier 'jwt' dans le repertoire /config du projet et se positionner dans ce nouveau répertoire
+    Créer les clefs de chiffrement avec les commandes suivantes :
+        openssl genpkey -out private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
+        openssl pkey -in private.pem -out public.pem -pubout
+            
