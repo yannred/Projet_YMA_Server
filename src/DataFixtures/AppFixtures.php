@@ -140,12 +140,11 @@ class AppFixtures extends Fixture
             array('Moutarde', '20cl', 1, self::PHOTO, false, 'Sauce'),
             array('Béarnaise', '20cl', 1, self::PHOTO, false, 'Sauce'),
 
-            array('Coca-Cola Coke', '33cl', 2.5, self::PHOTO, false, 'Boisson'),
-            array('Orangina', '33cl', 2.5, self::PHOTO, false, 'Boisson'),
-            array('Sprite', '33cl', 2.5, self::PHOTO, false, 'Boisson'),
-            array('Oasis orange', '33cl', 2.5, self::PHOTO, false, 'Boisson'),
-            array('Perrier', '33cl', 2.5, self::PHOTO, false, 'Boisson'),
-            array('Vittel', '50cl', 2.5, self::PHOTO, false, 'Boisson'),
+            array('Coca-Cola Coke', '33cl', 2.5, "/Produits/0003.png", false, 'Boisson'),
+            array('Orangina', '33cl', 2.5, "/Produits/0004.png", false, 'Boisson'),
+            array('Sprite', '33cl', 2.5, "/Produits/0005.png", false, 'Boisson'),
+            array('Perrier', '33cl', 2.5, "/Produits/0006.png", false, 'Boisson'),
+            array('Vittel', '50cl', 2.5, "/Produits/0007.png", false, 'Boisson'),
 
             array('Tarte au fraise', 'Dessert fait maison', 5, self::PHOTO, true, 'Dessert'),
             array('Tarte Milka', 'Dessert si délicieux', 5.5, self::PHOTO, true, 'Dessert')
