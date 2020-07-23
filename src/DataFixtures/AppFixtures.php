@@ -125,11 +125,10 @@ class AppFixtures extends Fixture
             array('SAVOYARD', 'pain fariné cuit a la pierre Steak 180g pure boeuf cuit au barbecue ,sauce gruyère maison ,salade ,tomate ,oignons rouges ,tranche de jambon, oeuf ,fromage raclette.', 6.9, "/Produits/0027.png", false, 'Burger'),
             array('BUFFALO', 'Steak 45g pure boeuf et escalope de poulet mariné cuit au barbecue, sauce buffalo, salade, tomates, oignons, cornichons, double cheddar.', 6.9, "/Produits/0028.png", false, 'Burger'),
 
-            array('Nuggets x4', '4 délicieux pollos', 3.5, self::PHOTO, false, 'Tapas'),
-            array('Nuggets x6', '6 délicieux pollos', 5.5, self::PHOTO, false, 'Tapas'),
-            array('Nuggets x8', '8 délicieux pollos', 7, self::PHOTO, true, 'Tapas'),
-            array('Frites', 'Frites légères et croustillantes', 3.5, self::PHOTO, false, 'Tapas'),
-            array('Potatoes', 'Potatoes savoureuses', 3.5, self::PHOTO, false, 'Tapas'),
+            array('Nuggets x4', '4 délicieux pollos', 3.5, "/Produits/0029.png", false, 'Tapas'),
+            array('Nuggets x8', '8 délicieux pollos', 7, "/Produits/0031.png", true, 'Tapas'),
+            array('Frites', 'Frites légères et croustillantes', 3.5, "/Produits/0032.png", false, 'Tapas'),
+            array('Potatoes', 'Potatoes savoureuses', 3.5, "/Produits/0033.png", false, 'Tapas'),
 
             array('Frites', 'Frites légères et croustillantes', 3.5, self::PHOTO, false, 'Accompagnement menu'),
             array('Potatoes', 'Potatoes savoureuses', 3.5, self::PHOTO, false, 'Accompagnement menu'),
