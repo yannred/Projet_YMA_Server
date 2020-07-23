@@ -146,8 +146,8 @@ class AppFixtures extends Fixture
             array('Perrier', '33cl', 2.5, "/Produits/0006.png", false, 'Boisson'),
             array('Vittel', '50cl', 2.5, "/Produits/0007.png", false, 'Boisson'),
 
-            array('Tarte au fraise', 'Dessert fait maison', 5, self::PHOTO, true, 'Dessert'),
-            array('Tarte Milka', 'Dessert si délicieux', 5.5, self::PHOTO, true, 'Dessert')
+            array('Tarte au fraise', 'Dessert fait maison', 5, "/Produits/0008.png", true, 'Dessert'),
+            array('Tarte Milka', 'Dessert si délicieux', 5.5, "/Produits/0009.png", true, 'Dessert')
         );
         $tabObjetProduit = array();
         for ($i=0; $i < count($tabProduit); $i++){
