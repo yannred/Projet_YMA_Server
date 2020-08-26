@@ -18,7 +18,7 @@ class CommanderController extends AbstractController
     const ERROR_CODE = 400;
 
     /**
-     * @Route("/profile/commander", name="commander", methods={"POST"})
+     * @Route("/profile/validationPanier", name="validation_panier", methods={"POST"})
      * @param Request $request
      * @param EntityManagerInterface $entityManager
      * @return JsonResponse
