@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LigneCdeRepository")
  * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")r
  * @ORM\DiscriminatorMap({
  *   "menu" = "LigneCdeMenu",
  *   "produit" = "LigneCdeProduit"
