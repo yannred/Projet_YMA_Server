@@ -70,7 +70,7 @@ class Utilisateur implements UserInterface
     private $newsletter;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Adresse::class)
+     * @ORM\ManyToOne(targetEntity=Adresse::class, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $adresse;

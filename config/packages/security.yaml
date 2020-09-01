@@ -33,7 +33,7 @@ security:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
         admin:
-            pattern:   ^/profile
+            pattern:   ^/admin
             stateless: true
             guard:
                 authenticators:
