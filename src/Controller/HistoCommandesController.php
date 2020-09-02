@@ -39,7 +39,13 @@ class HistoCommandesController extends AbstractController
             $cde = [];
             $cde['id'] = $cdes[$i]->getId();
             $cde['emporte'] = $cdes[$i]->getEmporter();
-            $cde['date_retrait'] = $cdes[$i]->getDateRetrait();
+//            $cde['date_retrait'] = $cdes[$i]->getDateRetrait()->format('d/m/y');
+            
+            if ($cdes[$i]->getDateRetrait() == null){
+                $cde['date_retrait'] = null;
+            } else {
+                $cde['date_retrait'] = $cdes[$i]->getDateRetrait()->format('d-m-Y');
+            }
             $cde['prix_total'] = $cdes[$i]->getPrixTotal();
             array_push($json, $cde);
         }
