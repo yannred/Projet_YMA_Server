@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MenuRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,16 @@ class Menu
      * @ORM\Column(type="boolean")
      */
     private $promo;
+
+    /**
+     * @ORM\OneToMany(targetEntity=LigneCdeMenu::class, mappedBy="menu", orphanRemoval=true)
+     */
+    private $ligneCdeMenus;
+
+    public function __construct()
+    {
+        $this->ligneCdeMenus = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +81,37 @@ class Menu
     public function setPromo(bool $promo): self
     {
         $this->promo = $promo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LigneCdeMenu[]
+     */
+    public function getLigneCdeMenus(): Collection
+    {
+        return $this->ligneCdeMenus;
+    }
+
+    public function addLigneCdeMenu(LigneCdeMenu $ligneCdeMenu): self
+    {
+        if (!$this->ligneCdeMenus->contains($ligneCdeMenu)) {
+            $this->ligneCdeMenus[] = $ligneCdeMenu;
+            $ligneCdeMenu->setMenu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneCdeMenu(LigneCdeMenu $ligneCdeMenu): self
+    {
+        if ($this->ligneCdeMenus->contains($ligneCdeMenu)) {
+            $this->ligneCdeMenus->removeElement($ligneCdeMenu);
+            // set the owning side to null (unless already changed)
+            if ($ligneCdeMenu->getMenu() === $this) {
+                $ligneCdeMenu->setMenu(null);
+            }
+        }
 
         return $this;
     }

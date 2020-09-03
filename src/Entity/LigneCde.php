@@ -6,9 +6,15 @@ use App\Repository\LigneCdeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=LigneCdeRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\LigneCdeRepository")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")r
+ * @ORM\DiscriminatorMap({
+ *   "menu" = "LigneCdeMenu",
+ *   "produit" = "LigneCdeProduit"
+ * })
  */
-class LigneCde
+abstract class LigneCde
 {
     /**
      * @ORM\Id()
@@ -28,7 +34,7 @@ class LigneCde
     private $quantite;
 
     /**
-     * @ORM\ManyToOne(targetEntity=commande::class)
+     * @ORM\ManyToOne(targetEntity=Commande::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $commande;
@@ -62,12 +68,12 @@ class LigneCde
         return $this;
     }
 
-    public function getCommande(): ?commande
+    public function getCommande(): ?Commande
     {
         return $this->commande;
     }
 
-    public function setCommande(?commande $commande): self
+    public function setCommande(?Commande $commande): self
     {
         $this->commande = $commande;
 
