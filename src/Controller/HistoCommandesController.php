@@ -30,7 +30,8 @@ class HistoCommandesController extends AbstractController
         $cdes = $cdeRepo->findBy(['utilisateur' => $utilisateur]);
 
         if (!$cdes){
-            return new JsonResponse(['Erreur dans la requete'], self::ERROR_CODE);
+            $json = "Pas de commande";
+            return new JsonResponse($json);
         }
         
         $json = [];
