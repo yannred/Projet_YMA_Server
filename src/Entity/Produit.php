@@ -81,6 +81,7 @@ class Produit
     /**
      * @ORM\ManyToOne(targetEntity=CategorieProduit::class, inversedBy="produits")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("produits:list")
      */
     private $categorie_produit;
 

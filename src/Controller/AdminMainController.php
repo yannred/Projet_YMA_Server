@@ -21,6 +21,6 @@ class AdminMainController extends AbstractController
                 return new JsonResponse(['reponse' => 'Adminnistrateur vérifié']);
             }
         }
-        return new JsonResponse(['L\'utilisateur n\'est pas un administrateur'], self::ACCES_ERROR_CODE);
+        return new JsonResponse(['reponse' => 'L\'utilisateur n\'est pas un administrateur']);
     }
 }
