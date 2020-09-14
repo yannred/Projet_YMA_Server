@@ -39,7 +39,7 @@ class CategorieProduit
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="categorie_produit", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="categorieProduit", orphanRemoval=true)
      * @Groups("categorieProduit:list")
      */
     private $produits;
