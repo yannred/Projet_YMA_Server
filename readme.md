@@ -46,4 +46,10 @@ Créer les clefs pour l'authentification
     Créer les clefs de chiffrement avec les commandes suivantes :
         openssl genpkey -out private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
         openssl pkey -in private.pem -out public.pem -pubout
-            
+        
+Paramétrer l'envoi de mail pour la prise de commande.
+
+    Dans le fichier .env.local, rajouter compte google :
+        MAILER_DSN=gmail+smtp://USERNAME:PASSWORD@default (adresse servant à envoyer un mail)
+            (le USERNAME doit etre encodé en URL : https://www.urlencoder.org/)
+        MAIL_COMMANDE="mail@domaine.com" (adresse où sont envoyés les commandes)
