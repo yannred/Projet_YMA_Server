@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CategorieProduit;
 use App\Entity\Produit;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,6 +46,11 @@ class MajProduitController extends AbstractController
                         }
                         if (isset($json['prix'])) {
                             $produit->setPrix($json['prix']);
+                        }
+                        if (isset($json['categorie'])) {
+                            $repo = $this->getDoctrine()->getRepository(CategorieProduit::class);
+                            $categorie = $repo->findBy(['nom' => $json['categorie']]);
+                            $produit->setCategorieProduit($categorie[0]);
                         }
 
                         $entityManager->persist($produit);
