@@ -50,6 +50,6 @@ Créer les clefs pour l'authentification
 Paramétrer l'envoi de mail pour la prise de commande.
 
     Dans le fichier .env.local, rajouter compte google :
-        MAILER_DSN=gmail+smtp://USERNAME:PASSWORD@default (utiliser celui-ci)
-        MAIL_COMMANDE="mail@domaine.com"
-            
+        MAILER_DSN=gmail+smtp://USERNAME:PASSWORD@default (adresse servant à envoyer un mail)
+            (le USERNAME doit etre encodé en URL : https://www.urlencoder.org/)
+        MAIL_COMMANDE="mail@domaine.com" (adresse où sont envoyés les commandes)
