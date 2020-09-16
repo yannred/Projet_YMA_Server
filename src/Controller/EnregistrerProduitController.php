@@ -42,7 +42,7 @@ class EnregistrerProduitController extends AbstractController
                         $produit->setNom($json['nom']);
                         $produit->setDescription($json['description']);
                         $produit->setPrix($json['prix']);
-                        $produit->setPromo($json['promo']);
+                        $produit->setPromo($json['promo'] == "true");
                         if(isset($_FILES['photo'])){
                             $dossier = '';
                             $fichier=time();
