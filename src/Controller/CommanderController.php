@@ -28,11 +28,12 @@ class CommanderController extends AbstractController
         if ($content = $request->getContent()) {
             $json = json_decode($content, true);
             if (isset($json['idProduit'])) {
-
                 $repository = $this->getDoctrine()->getRepository(Produit::class);
                 $prixTotal = 0;
+                $tabProduitsDeLaCde = [];
                 foreach ($json['idProduit'] as $idProduit){
                     $product = $repository->find($idProduit);
+                    array_push($tabProduitsDeLaCde, $product);
                     $prixTotal = $prixTotal + $product->getPrix();
                 }
                 $commande = new Commande();
@@ -44,20 +45,16 @@ class CommanderController extends AbstractController
                 $entityManager->flush();
 
                 $i = 1;
-                foreach ($json['idProduit'] as $idProduit) {
+                foreach ($tabProduitsDeLaCde as $produitDeLaCde){
                     $ligneCommande = new LigneCdeProduit();
                     $ligneCommande->setCommande($commande);
                     $ligneCommande->setNumLigne($i);
                     $ligneCommande->setQuantite(1);
-
-                    $repository = $this->getDoctrine()->getRepository(Produit::class);
-                    $product = $repository->find($idProduit);
-                $ligneCommande->setProduit($product);
-
-                $entityManager->persist($ligneCommande);
-                $entityManager->flush();
-                $i++;
-            }
+                    $ligneCommande->setProduit($produitDeLaCde);
+                    $entityManager->persist($ligneCommande);
+                    $entityManager->flush();
+                    $i++;
+                }
             }
 
             return new JsonResponse(['reponse' => 'Commande enregistree']);
