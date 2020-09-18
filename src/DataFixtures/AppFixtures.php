@@ -87,7 +87,8 @@ class AppFixtures extends Fixture
         'Accompagnement menu',
         'Boisson',
         'Dessert',
-        'Sauce'
+        'Sauce',
+        'Produit désactivé'
         );
         $tabObjetCategorieProduit = array();
         for ($i=0; $i < count($tabCategorieProduit); $i++){
