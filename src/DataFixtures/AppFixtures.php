@@ -51,9 +51,10 @@ class AppFixtures extends Fixture
         //************************************************************************************************************
         $tabUser = array();
 
-        $ROLE_USER[]= 'ROLE_USER';
+        $ROLES_USER[]= 'ROLE_USER';
+        array_push($ROLES_USER,'ROLE_ADMIN');
         array_push($tabUser,
-            array('user4auth', $ROLE_USER, '%!password4auth!%', 'user4auth', 'user4auth', 'telephone', 'numéro de porte', 'code entrée', 'complement', true,)
+            array('user4admin@bistrot-house.tk', $ROLES_USER, 'password4admin', 'user4admin', 'user4admin', 'telephone', 'numéro de porte', 'code entrée', 'complement', true,)
         );
         $tabObjetUser = array();
         for ($i=0; $i < count($tabUser); $i++){
@@ -86,7 +87,8 @@ class AppFixtures extends Fixture
         'Accompagnement menu',
         'Boisson',
         'Dessert',
-        'Sauce'
+        'Sauce',
+        'Produit désactivé'
         );
         $tabObjetCategorieProduit = array();
         for ($i=0; $i < count($tabCategorieProduit); $i++){

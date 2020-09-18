@@ -42,6 +42,10 @@ class InscriptionController extends AbstractController
                 isset($json['ville']) &&
                 isset($json['telephone'])
             ) {
+                $repository = $this->getDoctrine()->getRepository(Utilisateur::class);
+                if ($utilisateur = $repository->findBy(['email' => $json['email']])){
+                    return new JsonResponse(['reponse' => 'adresse mail existe deja']);
+                }
                 $utilisateur = new Utilisateur();
                 $adresse = new Adresse();
                 $adresse->setNum($json['num']);
