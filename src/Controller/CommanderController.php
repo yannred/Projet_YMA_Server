@@ -47,7 +47,7 @@ class CommanderController extends AbstractController
                 }
                 $commande = new Commande();
                 $commande->setUtilisateur($this->getUser());
-                $commande->setEmporter(true);
+                $commande->setEmporter(false);
                 $commande->setDateRetrait(new \DateTime());
                 $commande->setPrixTotal($prixTotal);
                 $entityManager->persist($commande);
