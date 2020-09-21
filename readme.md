@@ -20,6 +20,9 @@ Créer des clefs de chiffrement :
 
 Créer un fichier .env.local à la racine du projet avec à l'intérieur les variables suivantes :
 
+    ### Adresse du site
+    BACKEND_SITE_URL="http://127.0.0.1:8000"
+    
     ### Infos base de données
     DATABASE_URL=mysql://login:password@127.0.0.1:3306/nombdd?serverVersion=8.0.18
     

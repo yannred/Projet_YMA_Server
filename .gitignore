@@ -7,8 +7,16 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+###> IDE files
 /.idea/
 /.vscode/
+###< IDE files
+
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
+
+###> Images uploades en dehors du processus des fixtures
+/public/Images/Produits/
+###< Images uploades en dehors du processus des fixtures
