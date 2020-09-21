@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Dotenv\Dotenv;
+use App\Service\ContainerParametersHelper;
 
 class EnregistrerProduitController extends AbstractController
 {
@@ -20,9 +21,10 @@ class EnregistrerProduitController extends AbstractController
      * @Route("/admin/enregistrerProduit", name="enregistrer_produit", methods={"POST"})
      * @param Request $request
      * @param EntityManagerInterface $entityManager
+     * @param ContainerParametersHelper $pathHelpers (permet d'obtenir le repertoire ou est installer l'appli back)
      * @return JsonResponse
      */
-    public function index(Request $request, EntityManagerInterface $entityManager)
+    public function index(Request $request, EntityManagerInterface $entityManager, ContainerParametersHelper $pathHelpers)
     {
         $roles = $this->getUser()->getRoles();
         for ($i = 0; $i < count($roles); $i++) {
@@ -54,7 +56,8 @@ class EnregistrerProduitController extends AbstractController
                         //TODO : Impossible de recuperer le dossier public du projet sans apparement créer une couche de service qu'il faudrait injecter dans ce controller
                         //https://ourcodeworld.com/articles/read/882/how-to-retrieve-the-root-dir-of-the-project-and-other-container-parameters-using-a-service-in-symfony-4
 //                        $dossier = $this->get('kernel')->getProjectDir() . '/public/';   // ne focntionne pas
-                        $dossier = "D:\Documents\Dev\Projets HOC\Projet_YMA\Projet_YMA_Server\public\Images\Produits";
+//                        $dossier = "D:\Documents\Dev\Projets HOC\Projet_YMA\Projet_YMA_Server\public\Images\Produits";
+                        $dossier = $pathHelpers->getApplicationRootDir() . "/public/Images/Produits";
                         $nomFichier = uniqid();
                         $extensionFichier = strrchr($originalName, '.');
                         $extensionsAcceptees = array('.png', '.gif', '.jpg', '.jpeg');
