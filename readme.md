@@ -19,7 +19,7 @@ Créer des clefs de chiffrement :
         $ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
 
 Créer un fichier .env.local à la racine du projet avec à l'intérieur les variables suivantes :
-
+    
     ### Infos base de données
     DATABASE_URL=mysql://login:password@127.0.0.1:3306/nombdd?serverVersion=8.0.18
     

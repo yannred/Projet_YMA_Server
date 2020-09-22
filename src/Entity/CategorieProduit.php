@@ -34,11 +34,12 @@ class CategorieProduit
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("categorieProduit:list")
+     * @Groups("produits:list")
      */
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="categorie_produit", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="categorieProduit", orphanRemoval=true)
      * @Groups("categorieProduit:list")
      */
     private $produits;

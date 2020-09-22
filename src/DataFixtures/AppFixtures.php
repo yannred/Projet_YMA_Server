@@ -51,9 +51,10 @@ class AppFixtures extends Fixture
         //************************************************************************************************************
         $tabUser = array();
 
-        $ROLE_USER[]= 'ROLE_USER';
+        $ROLES_USER[]= 'ROLE_USER';
+        array_push($ROLES_USER,'ROLE_ADMIN');
         array_push($tabUser,
-            array('user4auth', $ROLE_USER, '%!password4auth!%', 'user4auth', 'user4auth', 'telephone', 'numéro de porte', 'code entrée', 'complement', true,)
+            array('user4admin@bistrot-house.tk', $ROLES_USER, 'password4admin', 'user4admin', 'user4admin', 'telephone', 'numéro de porte', 'code entrée', 'complement', true,)
         );
         $tabObjetUser = array();
         for ($i=0; $i < count($tabUser); $i++){
@@ -86,7 +87,8 @@ class AppFixtures extends Fixture
         'Accompagnement menu',
         'Boisson',
         'Dessert',
-        'Sauce'
+        'Sauce',
+        'Produit désactivé'
         );
         $tabObjetCategorieProduit = array();
         for ($i=0; $i < count($tabCategorieProduit); $i++){
@@ -103,32 +105,32 @@ class AppFixtures extends Fixture
 
         $tabProduit = array();
         array_push($tabProduit,
-            array('MARGUERITA', 'Sauce tomate ou Crème fraîche, mozzarella, olives.', 8.9, "/Produits/0001.png", false, 'Pizza'),
-            array('REGINA', 'Sauce tomate ou Crème fraîche, mozzarella, jambon, champignons frais.', 9.9, "/Produits/0010.jpg", true, 'Pizza'),
-            array('TONNATA', 'Sauce tomate ou Crème fraîche, mozzarella, thon, olives.', 9.9, "/Produits/0011.jpg", true, 'Pizza'),
-            array('ORIENTALE', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, merguez fraiche preparer maison et precuite a la braise, poivrons, oignons rouges.', 9.9, "/Produits/0012.jpg", false, 'Pizza'),
-            array('CAMPIONE', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, viande hachée cuite a la braise ,olives vertes oeuf.', 9.9, "/Produits/0013.jpg", false, 'Pizza'),
-            array('BUFFALO', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, viande hachée cuite a la braise, oignons rouges, olives.', 9.9, "/Produits/0014.jpg", false, 'Pizza'),
-            array('MEDITERRANEENNE', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, fruits de mer, beurre persillé.', 9.9, "/Produits/0015.jpg", false, 'Pizza'),
-            array('4 FROMAGES', 'Sauce tomate ou Crème fraîche, mozzarella, emmental, chèvre, roquefort.', 9.9, "/Produits/0016.jpg", false, 'Pizza'),
-            array('CHEF', 'Sauce tomate ou Crème fraîche, mozzarella, viande hachée et merguez, poivrons et oignons rouges frais.', 9.9, "/Produits/0017.jpg", true, 'Pizza'),
-            array('ALL STAR', 'Sauce tomate cuisinée maison ou Crème fraîche, mozzarella, poulet fumé en charcuterie, oignons rouges, poivrons frais, oeuf.', 11.9, "/Produits/0018.jpg", false, 'Pizza'),
+            array('MARGUERITA', 'Sauce tomate ou Crème fraîche, mozzarella, olives.', 8.9, "0001.png", false, 'Pizza'),
+            array('REGINA', 'Sauce tomate ou Crème fraîche, mozzarella, jambon, champignons frais.', 9.9, "0010.jpg", true, 'Pizza'),
+            array('TONNATA', 'Sauce tomate ou Crème fraîche, mozzarella, thon, olives.', 9.9, "0011.jpg", true, 'Pizza'),
+            array('ORIENTALE', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, merguez fraiche preparer maison et precuite a la braise, poivrons, oignons rouges.', 9.9, "0012.jpg", false, 'Pizza'),
+            array('CAMPIONE', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, viande hachée cuite a la braise ,olives vertes oeuf.', 9.9, "0013.jpg", false, 'Pizza'),
+            array('BUFFALO', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, viande hachée cuite a la braise, oignons rouges, olives.', 9.9, "0014.jpg", false, 'Pizza'),
+            array('MEDITERRANEENNE', 'Sauce tomate cuisiner maison ou Crème fraîche, mozzarella, fruits de mer, beurre persillé.', 9.9, "0015.jpg", false, 'Pizza'),
+            array('4 FROMAGES', 'Sauce tomate ou Crème fraîche, mozzarella, emmental, chèvre, roquefort.', 9.9, "0016.jpg", false, 'Pizza'),
+            array('CHEF', 'Sauce tomate ou Crème fraîche, mozzarella, viande hachée et merguez, poivrons et oignons rouges frais.', 9.9, "0017.jpg", true, 'Pizza'),
+            array('ALL STAR', 'Sauce tomate cuisinée maison ou Crème fraîche, mozzarella, poulet fumé en charcuterie, oignons rouges, poivrons frais, oeuf.', 11.9, "0018.jpg", false, 'Pizza'),
 
-            array('CHEESE', 'Pain brioche, Steak 45g pure boeuf cuit au barbecue, cheddar, cornichons, ketchup, moutarde.', 4.9, "/Produits/0019.png", false, 'Burger'),
-            array('FLY FISH', 'Pain au sésame, poisson pané, cheddar, salade, tomates, oignons, sauce fish.', 4.9, "/Produits/0020.jpg", false, 'Burger'),
-            array('CHICKEN', 'Pain au sésame, poulet pané, cheddar, salade, tomates, oignons, sauce tartare.', 5.9, "/Produits/0021.jpg", false, 'Burger'),
-            array('TAHITIEN BURGER', 'Pain au sésame, steak 100g pure boeuf cuit au barbecue, tranche d\'ananas, salade, tomates, oignons sauce barbecue.', 5.9, "/Produits/0022.jpg", false, 'Burger'),
-            array('SEGUIN', 'Steak 100g, tomates, rondelles de chèvre.', 5.9, "/Produits/0023.jpg", false, 'Burger'),
-            array('BRAZIL', 'Pain au sésame, steak 100g pure boeuf cuit au barbecue, tranche de jambon, cheddar, salade, tomates, oignons.', 5.9, "/Produits/0024.jpg", false, 'Burger'),
-            array('GREC', 'Pain au sésame, steak 100g pure boeuf et émincés kebab cuit au barbecue , salade, tomates, oignons.', 6.1, "/Produits/0025.jpg", true, 'Burger'),
-            array('MYSTIC', 'Pain fariné cuit à la pierre, steak 180g pure boeuf cuit au barbecue, chekchouka (légumes grille au four légèrement épicée ) salade, sauce gruyère maison.', 5.9, "/Produits/0026.jpg", true, 'Burger'),
-            array('SAVOYARD', 'pain fariné cuit a la pierre Steak 180g pure boeuf cuit au barbecue ,sauce gruyère maison ,salade ,tomate ,oignons rouges ,tranche de jambon, oeuf ,fromage raclette.', 6.9, "/Produits/0027.jpg", false, 'Burger'),
-            array('BUFFALO', 'Steak 45g pure boeuf et escalope de poulet mariné cuit au barbecue, sauce buffalo, salade, tomates, oignons, cornichons, double cheddar.', 6.9, "/Produits/0028.jpg", false, 'Burger'),
+            array('CHEESE', 'Pain brioche, Steak 45g pure boeuf cuit au barbecue, cheddar, cornichons, ketchup, moutarde.', 4.9, "0019.png", false, 'Burger'),
+            array('FLY FISH', 'Pain au sésame, poisson pané, cheddar, salade, tomates, oignons, sauce fish.', 4.9, "0020.jpg", false, 'Burger'),
+            array('CHICKEN', 'Pain au sésame, poulet pané, cheddar, salade, tomates, oignons, sauce tartare.', 5.9, "0021.jpg", false, 'Burger'),
+            array('TAHITIEN BURGER', 'Pain au sésame, steak 100g pure boeuf cuit au barbecue, tranche d\'ananas, salade, tomates, oignons sauce barbecue.', 5.9, "0022.jpg", false, 'Burger'),
+            array('SEGUIN', 'Steak 100g, tomates, rondelles de chèvre.', 5.9, "0023.jpg", false, 'Burger'),
+            array('BRAZIL', 'Pain au sésame, steak 100g pure boeuf cuit au barbecue, tranche de jambon, cheddar, salade, tomates, oignons.', 5.9, "0024.jpg", false, 'Burger'),
+            array('GREC', 'Pain au sésame, steak 100g pure boeuf et émincés kebab cuit au barbecue , salade, tomates, oignons.', 6.1, "0025.jpg", true, 'Burger'),
+            array('MYSTIC', 'Pain fariné cuit à la pierre, steak 180g pure boeuf cuit au barbecue, chekchouka (légumes grille au four légèrement épicée ) salade, sauce gruyère maison.', 5.9, "0026.jpg", true, 'Burger'),
+            array('SAVOYARD', 'pain fariné cuit a la pierre Steak 180g pure boeuf cuit au barbecue ,sauce gruyère maison ,salade ,tomate ,oignons rouges ,tranche de jambon, oeuf ,fromage raclette.', 6.9, "0027.jpg", false, 'Burger'),
+            array('BUFFALO', 'Steak 45g pure boeuf et escalope de poulet mariné cuit au barbecue, sauce buffalo, salade, tomates, oignons, cornichons, double cheddar.', 6.9, "0028.jpg", false, 'Burger'),
 
-            array('Nuggets x4', '4 délicieux pollos', 3.5, "/Produits/0029.png", false, 'Tapas'),
-            array('Nuggets x8', '8 délicieux pollos', 7, "/Produits/0031.png", true, 'Tapas'),
-            array('Frites', 'Frites légères et croustillantes', 3.5, "/Produits/0032.png", false, 'Tapas'),
-            array('Potatoes', 'Potatoes savoureuses', 3.5, "/Produits/0033.png", false, 'Tapas'),
+            array('Nuggets x4', '4 délicieux pollos', 3.5, "0029.png", false, 'Tapas'),
+            array('Nuggets x8', '8 délicieux pollos', 7, "0031.png", true, 'Tapas'),
+            array('Frites', 'Frites légères et croustillantes', 3.5, "0032.png", false, 'Tapas'),
+            array('Potatoes', 'Potatoes savoureuses', 3.5, "0033.png", false, 'Tapas'),
 
             array('Frites', 'Frites légères et croustillantes', 3.5, self::PHOTO, false, 'Accompagnement menu'),
             array('Potatoes', 'Potatoes savoureuses', 3.5, self::PHOTO, false, 'Accompagnement menu'),
@@ -139,14 +141,14 @@ class AppFixtures extends Fixture
             array('Moutarde', '20cl', 1, self::PHOTO, false, 'Sauce'),
             array('Béarnaise', '20cl', 1, self::PHOTO, false, 'Sauce'),
 
-            array('Coca-Cola Coke', '33cl', 2.5, "/Produits/0003.png", false, 'Boisson'),
-            array('Orangina', '33cl', 2.5, "/Produits/0004.png", false, 'Boisson'),
-            array('Sprite', '33cl', 2.5, "/Produits/0005.png", false, 'Boisson'),
-            array('Perrier', '33cl', 2.5, "/Produits/0006.png", false, 'Boisson'),
-            array('Vittel', '50cl', 2.5, "/Produits/0007.png", false, 'Boisson'),
+            array('Coca-Cola Coke', '33cl', 2.5, "0003.png", false, 'Boisson'),
+            array('Orangina', '33cl', 2.5, "0004.png", false, 'Boisson'),
+            array('Sprite', '33cl', 2.5, "0005.png", false, 'Boisson'),
+            array('Perrier', '33cl', 2.5, "0006.png", false, 'Boisson'),
+            array('Vittel', '50cl', 2.5, "0007.png", false, 'Boisson'),
 
-            array('Tarte au fraise', 'Dessert fait maison', 5, "/Produits/0008.png", true, 'Dessert'),
-            array('Tarte Milka', 'Dessert si délicieux', 5.5, "/Produits/0009.png", true, 'Dessert')
+            array('Tarte au fraise', 'Dessert fait maison', 5, "0008.png", true, 'Dessert'),
+            array('Tarte Milka', 'Dessert si délicieux', 5.5, "0009.png", true, 'Dessert')
         );
         $tabObjetProduit = array();
         for ($i=0; $i < count($tabProduit); $i++){
