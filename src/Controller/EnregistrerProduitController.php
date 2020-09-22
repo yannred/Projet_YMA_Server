@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Dotenv\Dotenv;
 use App\Service\ContainerParametersHelper;
 
 class EnregistrerProduitController extends AbstractController
@@ -67,9 +66,9 @@ class EnregistrerProduitController extends AbstractController
                         if (!move_uploaded_file($tmpFilePath, $dossier . "/" . $nomFichier . $extensionFichier)) {
                             return new JsonResponse(['Erreur liee a l enregistrement du fichier image'], self::ERROR_CODE);
                         }
-                        $produit->setPhoto($_ENV['BACKEND_SITE_URL'] . "/Images/Produits/" . $nomFichier . $extensionFichier);
+                        $produit->setPhoto($nomFichier . $extensionFichier);
                     } else {
-                        $produit->setPhoto("/Produits/0000.png");
+                        $produit->setPhoto("0000.png");
                     }
                     $entityManager->persist($produit);
                     $entityManager->flush();
