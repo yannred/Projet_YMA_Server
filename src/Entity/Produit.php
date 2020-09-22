@@ -81,8 +81,9 @@ class Produit
     /**
      * @ORM\ManyToOne(targetEntity=CategorieProduit::class, inversedBy="produits")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("produits:list")
      */
-    private $categorie_produit;
+    private $categorieProduit;
 
     public function __construct()
     {
@@ -157,12 +158,12 @@ class Produit
 
     public function getCategorieProduit(): ?CategorieProduit
     {
-        return $this->categorie_produit;
+        return $this->categorieProduit;
     }
 
-    public function setCategorieProduit(?CategorieProduit $categorie_produit): self
+    public function setCategorieProduit(?CategorieProduit $categorieProduit): self
     {
-        $this->categorie_produit = $categorie_produit;
+        $this->categorieProduit = $categorieProduit;
 
         return $this;
     }
